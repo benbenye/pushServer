@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+
+{% block main %}
+{{ data[0].top.imgAlt }}
+<ul>
+    {% for item in data %}
+        <li><img src="{{ item.top.imgSrc }}" alt="{{ item.top.imgAlt }}"/></li>
+    {% endfor %}
+</ul>
+{% endblock %}

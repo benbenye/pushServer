@@ -1,0 +1,10 @@
+{% extends "../index/product.html" %}
+{% block list %}
+<ul>
+	{% for item in data %}
+		<li><a href="{{ item.aHref }}"><img src="{{ item.imgSrc }}" alt="{{ item.imgAlt }}"></a></li>
+	{% endfor%}
+	<li><a href="{{ data.aHref }}"><img src="{{ data.imgSrc }}" alt="{{ data.imgAlt }}"></a></li>
+</ul>
+
+{% endblock %}

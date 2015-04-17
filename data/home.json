@@ -1,0 +1,40 @@
+[
+	{
+	  	"title": "安心蔬菜",
+		"top": {
+			"aHref": "/product/7547",
+			"imgSrc": "http://i0.chunboimg.com/group1/M00/01/10/Cv4IdVUuHQKAWcrYAAJD19peFyk182.jpg",
+		  	"imgAlt": "葡萄"
+		},
+	  	"list": [
+            {
+                "aHref": "/product/7547",
+                "imgSrc": "http://i1.chunboimg.com/group1/M00/01/0D/Cv4IdVUtxyOAWR_0AAHmYEip0lY785.jpg",
+                "imgAlt": "desx",
+                "pDesc": "描述",
+                "pTitle": "标题",
+                "pPrice": "￥123.00",
+                "pSize": "4只装"
+            }
+		]
+	},
+  {
+    "title": "新鲜水果",
+    "top": {
+      "aHref": "/product/7547",
+      "imgSrc": "http://i1.chunboimg.com/group1/M00/01/0D/Cv4IdVUtxyOAWR_0AAHmYEip0lY785.jpg",
+      "imgAlt": "葡萄"
+    },
+    "list": [
+      {
+        "aHref": "/product/7547",
+        "imgSrc": "http://i0.chunboimg.com/group1/M00/01/10/Cv4IdVUuHQKAWcrYAAJD19peFyk182.jpg",
+        "imgAlt": "desx",
+        "pDesc": "描述",
+        "pTitle": "标题",
+        "pPrice": "￥123.00",
+        "pSize": "4只装"
+      }
+    ]
+  }
+]

@@ -1,0 +1,20 @@
+[
+	{
+        "aHref": "/product/7547",
+        "imgSrc": "http://i1.chunboimg.com/group1/M00/01/0D/Cv4IdVUtxyOAWR_0AAHmYEip0lY785.jpg",
+        "imgAlt": "desx",
+        "pDesc": "描述",
+        "pTitle": "标题",
+        "pPrice": "￥123.00",
+        "pSize": "4只装"
+	},
+    {
+        "aHref": "/product/7547",
+        "imgSrc": "http://i1.chunboimg.com/group1/M00/01/0D/Cv4IdVUtxyOAWR_0AAHmYEip0lY785.jpg",
+        "imgAlt": "desx",
+        "pDesc": "描述",
+        "pTitle": "标题",
+        "pPrice": "￥456.00",
+        "pSize": "4只装"
+    }
+]
