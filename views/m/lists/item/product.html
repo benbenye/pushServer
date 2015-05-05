@@ -1,10 +1,9 @@
-{% extends "../index/product.html" %}
-{% block list %}
+{% extends "m/lists/item/product.html" %}
+{% block mlist %}
 		<ul>
-			{% for item in data().lists %}
+			{% for item in data.lists %}
 				<li><a href="{{ item.aHref }}"><img src="{{ item.imgSrc }}" alt="{{ item.imgAlt }}"></a></li>
 			{% endfor%}
-			{{ locals.mystuff().data.name }}
 			<li><a href="{{ data.aHref }}"><img src="{{ data.imgSrc }}" alt="{{ data.imgAlt }}"></a></li>
 		</ul>
 

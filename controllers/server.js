@@ -3,14 +3,14 @@ var nunjucks = require('nunjucks');
 var fs = require('fs');
 
 function Server(){
-	this.post = function(req, res){
+	this.post = function(req, res, next){
 
 		var resJson = {
 			"render": {
 				"code": 1,
 				// "templ":'../views/lists/item/product.html',
-				"templ":'./views/lists/item/product.html',
-				"staticName": 'product.html'
+				"templ":'pc/lists/item/product.html',
+				"staticName": 'product2.html'
 			},
 			"data": {
 				"name": req.body.name,
@@ -38,9 +38,8 @@ function Server(){
 			}
 		};
 		var dd = nunjucks.render(resJson.render.templ,{
-				"data":resJson.datar
+				"data":resJson.data
 			});
-	
 		fs.open('./build/'+resJson.render.staticName,'w+', function(err, cb){
 			if(err) throw err;
 			fs.writeFile('./build/'+resJson.render.staticName, dd, function (err) {
@@ -49,10 +48,7 @@ function Server(){
 			});
 		});
 
-		//优先级
-
 		res.json(resJson);
-
 	};
 }
 
