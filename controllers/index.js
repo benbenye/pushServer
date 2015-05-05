@@ -9,7 +9,7 @@ function Index(){
 				console.log(err.message);
 				return false;
 			}
-			res.render('../views/index.html',{
+			res.render('../views/pc/index.html',{
 				"data":data
 			});
 		});
@@ -19,7 +19,7 @@ function Index(){
 	this.handleErr = function(err, res, req){
 		res.statusCod = 404;
 		console.log(res.statusCod)
-		res.render('error.html', {
+		res.render('../views/pc/error.html', {
 			status: 404,
 			title: 'NodeBlog'
 		});

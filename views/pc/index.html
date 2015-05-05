@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+
+{% block main %}
+<form action="/post" method="post">
+	<label for="name">name：<input type="text" name="name"></label>
+	<label for="content">content: <input type="text" name="content"></label>
+	<label for="submit"><button>send</button></label>
+</form>
+{#
+<ul>
+    {% for item in data %}
+        <li><img src="{{ item.top.imgSrc }}" alt="{{ item.top.imgAlt }}"/></li>
+    {% endfor %}
+</ul>
+#}
+{% endblock %}
