@@ -1,6 +1,7 @@
 var fs = require('fs');
 var index = new Index();
 // var nunjucks = require('nunjucks');
+var dir = require('node-dir');
 var homeData = require('../modules/index.js');
 function Index(){
 	this.getHomePage = function(req, res, next){
@@ -16,17 +17,23 @@ function Index(){
 		// });
 
 		// 读取静态目录下的静态文件名
-		fs.readdir('views/pc/static', function(err, data){
-			// data.forEach(function(element, index){
-			// 	if(!element.test('/.html/')){
-			// 		fs.readdir('views/pc/static/'+element,function(){})
-			// 	}
-			// });
 
+		dir.paths(__dirname, true, function(err, paths) {
+		    if (err) throw err;
+		    console.log('paths:\n',paths);
+		});
+		dir.files('views/pc/static', function(err, files) {
+		    if (err) throw err;
+		    files = files.filter(function (file) {
+		            return file.indexOf('.DS_Store') === -1;
+		        });
+		    files = files.map(function(item){
+		    	return item.substr(16);
+		    })
+		    console.log(files);
 			res.render('../views/pc/index.html', {
-				'files' : data
+				'files' : files
 			});
-			// console.log(data);
 		});
 	};
 
