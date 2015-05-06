@@ -7,7 +7,15 @@
 	<label for="content">content: <input type="text" name="content"></label>
 	<label for="submit"><button>send</button></label>
 </form>
-
+<form action="/pushhtml" method="post">
+	<label for="file">文件：<select name="file" id="">
+		<option value="{{ files }}">all</option>
+		{% for item in files %}
+		<option value="{{ item }}">{{ item }}</option>
+		{% endfor %}
+	</select></label>
+	<label for="send"><button>send</button></label>
+</form>
 <ul>
     {% for item in data %}
         <li><img src="{{ item.top.imgSrc }}" alt="{{ item.top.imgAlt }}"/></li>
