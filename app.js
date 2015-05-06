@@ -14,8 +14,8 @@ var app = express();
 // view engine setup
 // app.engine('html', swig.renderFile);
 // app.set('view engine', 'html');
-app.set('views', path.join(__dirname, 'views'));
-nunjucks.configure('views', {
+app.set('templates', path.join(__dirname, 'templates'));
+nunjucks.configure('templates', {
   autoescape: true,
   express: app
 });

@@ -5,7 +5,7 @@ var products = require('../controllers/products');
 var server = require('../controllers/server');
 var statichtml = require('../controllers/statichtml');
 var nunjucks = require('nunjucks');
-var env = nunjucks.configure('views');
+var env = nunjucks.configure('templates');
 env.express(express());
 	
 /* GET home page. */

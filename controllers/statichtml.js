@@ -23,28 +23,23 @@ function Statichtml(){
 
 				fs.exists('./build/'+item.path, function (exists) {
 
+					var tasks = [];
 					if(!exists){
-						fs.mkdir('./build/'+item.path, function(){
-							fs.open('./build/'+item.path+item.name,'w+', function(err, cb){
-								if(err) throw err;
-
-								fs.writeFile('./build/'+item.path+item.name, item.nunjucksContent, function (err) {
-								  if (err) throw err;
-								  console.log('save');
-								});
+						tasks.push(function(callback){
+							fs.mkdir('./build/'+item.path, function(err){
+								callback(err);
 							});
-							cb(null);
-						});
-					}else{
-						fs.open('./build/'+item.path+item.name,'w+', function(err, cb){
-							if(err) throw err;
-							fs.writeFile('./build/'+item.path+item.name, item.nunjucksContent, function (err) {
-							  if (err) throw err;
-							  console.log('save');
-							});
-						});
-						cb(null);
+						})
 					}
+					tasks.push(function (callback) {
+						fs.writeFile('./build/'+item.path+item.name, item.nunjucksContent, function (err) {
+							console.log('save');
+							callback(err);
+						});
+					});
+					async.waterfall(tasks, function (err) {
+						cb(err);
+					})
 			});
 
 		},function(err){

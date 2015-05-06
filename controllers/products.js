@@ -13,7 +13,7 @@ function List(){
                 return false;
             }
             console.log(data);
-            res.render('../views/pc/lists/item/product.html',{
+            res.render('../templates/pc/lists/item/product.html',{
                 "data":data
             });
         });

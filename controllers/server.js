@@ -8,7 +8,7 @@ function Server(){
 		var resJson = {
 			"render": {
 				"code": 1,
-				// "templ":'../views/lists/item/product.html',
+				// "templ":'../templates/lists/item/product.html',
 				"templ":'pc/lists/item/product.html',
 				"staticName": 'product2.html'
 			},

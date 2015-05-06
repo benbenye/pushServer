@@ -11,7 +11,7 @@ function Index(){
 		// 		console.log(err.message);
 		// 		return false;
 		// 	}
-		// 	res.render('../views/pc/index.html',{
+		// 	res.render('../templates/pc/index.html',{
 		// 		"data":data
 		// 	});
 		// });
@@ -22,16 +22,16 @@ function Index(){
 		    if (err) throw err;
 		    console.log('paths:\n',paths);
 		});
-		dir.files('views/pc/static', function(err, files) {
+		dir.files('templates/pc/static', function(err, files) {
 		    if (err) throw err;
 		    files = files.filter(function (file) {
 		            return file.indexOf('.DS_Store') === -1;
 		        });
 		    files = files.map(function(item){
-		    	return item.substr(16);
+		    	return item.substr(20);
 		    })
 		    console.log(files);
-			res.render('../views/pc/index.html', {
+			res.render('../templates/pc/index.html', {
 				'files' : files
 			});
 		});
@@ -41,7 +41,7 @@ function Index(){
 	this.handleErr = function(err, res, req){
 		res.statusCod = 404;
 		console.log(res.statusCod)
-		res.render('../views/pc/error.html', {
+		res.render('../templates/pc/error.html', {
 			status: 404,
 			title: 'NodeBlog'
 		});
