@@ -1,28 +1,39 @@
 var statichtml = new Statichtml();
 var nunjucks = require('nunjucks');
 var fs = require('fs');
+var async = require('async');
 
 function Statichtml(){
 	this.pushHtml = function(req, res, next){
 		console.log(req.body);
-		var files = req.body.file.split(','),
-			staticRootPath = 'pc/static/'
-			dd = '';
-			console.log(files);
-		for (var i = 0, l = files.length; i < l; ++i) {
-		
-			dd = nunjucks.render(staticRootPath+files[i]);
-			fs.open('./build/'+files[i]+'sa','w+', function(err, cb){
-				console.log(i);
+		var files = [],
+			filesName = req.body.file.split(','),
+			staticRootPath = 'pc/static/';
+		for(var i = 0, l = filesName.length; i < l; ++i){
+			files.push({
+				name:filesName[i],
+				nunjucksContent: ''
+			});
+		}
+
+		async.each(files,function(item, cb){
+
+			item.nunjucksContent = nunjucks.render(staticRootPath+item.name);
+
+			fs.open('./build/'+item.name,'w+', function(err, cb){
 				if(err) throw err;
-				fs.writeFile('./build/'+files[i]+'sa', dd, function (err) {
-				console.log(i);
+
+				fs.writeFile('./build/'+item.name, item.nunjucksContent, function (err) {
 				  if (err) throw err;
-				  console.log('It\'s saved!');
 				});
 			});
+			cb(null);
 
-		};
+		},function(err){
+			if(err){
+				throw err;
+			}
+		});
 	};
 }
 
