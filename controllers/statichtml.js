@@ -18,8 +18,10 @@ function Statichtml(){
 		}
 
 		async.each(files,function(item, cb){
-
+			console.log(item.name + ';' + item.path + ';' + item.renderPath);
 			item.nunjucksContent = nunjucks.render(item.renderPath);
+				
+				if(item.path){item.path += '/';}
 
 				fs.exists('./build/'+item.path, function (exists) {
 
