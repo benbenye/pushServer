@@ -165,3 +165,51 @@ less  sass
 1：使用nunjucks，使用cluster 多进程管理
 2：静态页面渲染，nodejs path的定义
 3:路径深度优先遍历   使用node-dir模块
+4：gulp任务设置，css watch autoprefixer cssmin， js uglify watch min， images min， HTML
+
+
+首页：
+banner: [
+	{
+		id: '',
+		imgLink: ''
+	}
+]
+
+goodRecommend: [
+	{
+		id: '',
+		imgLink: '',
+		title: '',
+		desc: '',
+		size: '',
+		price: ''
+	}
+]
+layer: [
+	{
+		first:{
+			id: '',
+			imgLink: ''
+		}
+	}
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

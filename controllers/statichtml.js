@@ -23,18 +23,18 @@ function Statichtml(){
 				
 				if(item.path){item.path += '/';}
 
-				fs.exists('./build/'+item.path, function (exists) {
+				fs.exists('./build/html                                                                                            /'+item.path, function (exists) {
 
 					var tasks = [];
 					if(!exists){
 						tasks.push(function(callback){
-							fs.mkdir('./build/'+item.path, function(err){
+							fs.mkdir('./build/html                                                                                            /'+item.path, function(err){
 								callback(err);
 							});
 						})
 					}
 					tasks.push(function (callback) {
-						fs.writeFile('./build/'+item.path+item.name, item.nunjucksContent, function (err) {
+						fs.writeFile('./build/html                                                                                            /'+item.path+item.name, item.nunjucksContent, function (err) {
 							console.log('save');
 							callback(err);
 						});
@@ -48,6 +48,10 @@ function Statichtml(){
 			if(err){
 				throw err;
 			}
+			for(var i = 0, l = files.length; i < l; ++i){
+				delete files[i].nunjucksContent;
+			}
+			res.json({ok:1,files:files});
 		});
 	};
 }
