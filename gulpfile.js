@@ -65,6 +65,11 @@ gulp.task('minifyCss', ['cleancss'], function() {
     .pipe(concat('main.min.css'))
     .pipe(gulp.dest('build/stylesheets'));
 });
+/*
+* 开发的时候的引用路径
+* 生成HTML的css，js引用路径会影响到usemin的运行
+* 发布的html是希望替换的引用
+*/
 
 gulp.task('usemin', function(){
   return gulp.src('build/**/*.html')
