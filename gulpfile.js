@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var copy = require('gulp-copy');
 var usemin = require('gulp-usemin');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
@@ -25,12 +26,19 @@ gulp.task('clean', function(cb) {
 gulp.task('cleancss', function(cb){
   del(['build/stylesheets'], cb);
 });
+
 gulp.task('cleanjs', function(cb){
   del(['build/javascripts'], cb);
 });
+
 gulp.task('cleanimages', function(cb){
   del(['build/images'], cb);
 });
+
+gulp.task('copyBuildHtml', function(cb){
+  return gulp.src('build/html/**/*.html')
+    .pipe(gulp.dest('temp/'));
+})
  
 gulp.task('uglifyScripts', ['cleanjs'], function() {
   // Minify and copy all JavaScript (except vendor scripts) 
@@ -40,7 +48,6 @@ gulp.task('uglifyScripts', ['cleanjs'], function() {
       .pipe(uglify())
       .pipe(concat('all.min.js'))
     .pipe(sourcemaps.write())
-    .pipe(rev())
     .pipe(gulp.dest('build/js'));
 });
  
@@ -56,17 +63,17 @@ gulp.task('minifyCss', ['cleancss'], function() {
   return gulp.src(paths.css)
     .pipe(minifyCss({keepBreaks:false}))
     .pipe(concat('main.min.css'))
-    .pipe(rev())
     .pipe(gulp.dest('build/stylesheets'));
 });
 
 gulp.task('usemin', function(){
-  return gulp.src('build/html/**/*.html')
+  return gulp.src('build/**/*.html')
     .pipe(usemin({
-      css:[rev()],
-      js:[rev()]
+      css: [minifyCss(), 'concat',rev()],
+      js: [uglify(), rev()]
     }))
-    .pipe(gulp.dest('build/html'));
+    // .pipe(rev())
+    .pipe(gulp.dest('build/'));
 })
 
 gulp.task('less2css', function(){
